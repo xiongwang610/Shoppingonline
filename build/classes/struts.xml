@@ -1,0 +1,26 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	
+	<package name="struts" extends="struts-default" >
+		<action name="fileupdown" class="struts.FileUpdown_Struts" method="upDown">
+			<interceptor-ref name="fileUpload">
+					<param name="allowedTypes">image/png,image/jpeg,</param>
+					<param name="maximumSize">1024000</param>
+             	</interceptor-ref> 
+             	<interceptor-ref name="defaultStack"/>
+		</action>
+		<action name="goodsupdown" class="struts.GoodsUpdown_Struts" method="upDown"></action>
+		<action name="fileupload" class="struts.FileUpload_Struts" method="fileLoad"></action>
+		<action name="goodsupload" class="struts.GoodsUpload_Struts" method="goodsLoad"></action>
+		<action name="goodsupdate" class="struts.GoodsUpdate_Struts" method="goodsUpdate"></action>
+		<action name="goodsdelete" class="struts.GoodsDelete_Struts" method="goodsDelete"></action>
+		<action name="userupdate" class="struts.UserUpdate_Struts" method="userUpdate"></action>
+	</package>
+	
+</struts>
